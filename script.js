@@ -13,11 +13,15 @@ let appData = {
 };
 
 let questionFirst = prompt(
-    "Введите обяхательную статью расходов в этом месяце", "");
+    "Введите обязательную статью расходов в этом месяце", "");
 
 appData.necessaryExpenses[questionFirst] = prompt(
     "Во сколько обойдется", "");
 
+alert(((+appData.budget - 
+    +appData.necessaryExpenses[questionFirst])/30).toFixed(2));
 
+console.log(appData.budget + " " + appData.timeData + " " + 
+    appData.necessaryExpenses[questionFirst]);
 
 
