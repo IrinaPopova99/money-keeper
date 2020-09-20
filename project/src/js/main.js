@@ -1,5 +1,30 @@
 'use strict';
 
+let buttonStart = document.getElementById('start'),
+    
+    budgetValue = document.getElementsByClassName('budget-value')[0],
+    daybudgetValue = document.getElementsByClassName('daybudget-value')[0],
+    levelValue = document.getElementsByClassName('level-value')[0],
+    expensesValue = document.getElementsByClassName('expenses-value')[0],
+    optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value')[0],
+    incomeValue = document.getElementsByClassName('income-value')[0],
+    monthsavingsValue = document.getElementsByClassName('monthsavings-value')[0],
+    yearsavingsValue = document.getElementsByClassName('yearsavings-value')[0],
+
+    inputExpensesItem = document.getElementsByClassName('expenses-item'),
+    buttonExpensesItem = document.getElementsByTagName('button')[0],
+    buttonOptionalExpenses = document.getElementsByTagName('button')[1],
+    inputOptimalExpensesItem = document.querySelector('.optionalexpenses-item'),
+    buttonCountBudget = document.getElementsByTagName('button')[2],
+    inputChooseIncome = document.querySelector('.choose-income'),
+    inputSavings = document.querySelector('#savings'),
+    inputChooseSum = document.querySelector('#sum'),
+    inputChoosePercent = document.querySelector('#percent'),
+
+    inputYearValue = document.querySelector('.year-value'),
+    inputMonthValue = document.querySelector('.month-value'),
+    inputDayValue = document.querySelector('.day-value');
+ 
 let money, time;
 
 function start() {
@@ -84,12 +109,12 @@ let appData = {
     }
 };
 
-console.log("Наша программа включает в себя данные: ");
-for (let i in appData) {
-    console.log(i + appData[i]);
-}
+// console.log("Наша программа включает в себя данные: ");
+// for (let i in appData) {
+//     console.log(i + appData[i]);
+// }
 
-start();
+// start();
 // appData.chooseExpenses();
 // appData.chooseOptExpenses();
 // appData.detectDayBudget();
