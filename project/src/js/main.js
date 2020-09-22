@@ -84,13 +84,8 @@ buttonOptionalExpenses.addEventListener('click', function() {
 
 buttonCountBudget.addEventListener('click', function() {
     if (appData.budget != undefined) {
-        let sum = 0;
 
-        for(let item in appData.necessaryExpenses){
-            sum += +appData.necessaryExpenses[item];
-        }
-        
-        appData.moneyPerDay = ((+appData.budget - sum)/30).toFixed(2);
+        appData.moneyPerDay = ( (+appData.budget - +expensesValue.textContent) / 30).toFixed(2);
         daybudgetValue.textContent = appData.moneyPerDay;
     
         if (appData.moneyPerDay < 100) {
