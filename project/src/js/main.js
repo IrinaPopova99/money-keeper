@@ -24,7 +24,11 @@ let buttonStart = document.getElementById('start'),
     inputYearValue = document.querySelector('.year-value'),
     inputMonthValue = document.querySelector('.month-value'),
     inputDayValue = document.querySelector('.day-value');
- 
+
+buttonCountBudget.disabled = true;
+buttonExpensesItem.disabled = true;
+buttonOptionalExpenses.disabled = true;
+
 let money, time;
 
 buttonStart.addEventListener('click', function() {
@@ -40,6 +44,9 @@ buttonStart.addEventListener('click', function() {
     inputYearValue.value = new Date(Date.parse(time)).getFullYear();
     inputMonthValue.value = new Date(Date.parse(time)).getMonth() + 1;
     inputDayValue.value = new Date(Date.parse(time)).getDate();
+
+    buttonExpensesItem.disabled = false;
+    
 });
 
 buttonExpensesItem.addEventListener('click', function() {
@@ -61,6 +68,9 @@ buttonExpensesItem.addEventListener('click', function() {
     }
 
     expensesValue.textContent = sum;
+
+    buttonOptionalExpenses.disabled = false;
+    buttonCountBudget.disabled = false;
 });
 
 buttonOptionalExpenses.addEventListener('click', function() {
@@ -69,11 +79,18 @@ buttonOptionalExpenses.addEventListener('click', function() {
         appData.optionalExpenses[i] = questionFirst;
         optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
     }
+   
 });
 
 buttonCountBudget.addEventListener('click', function() {
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (+appData.budget/30).toFixed(2);
+        let sum = 0;
+
+        for(let item in appData.necessaryExpenses){
+            sum += +appData.necessaryExpenses[item];
+        }
+        
+        appData.moneyPerDay = ((+appData.budget - sum)/30).toFixed(2);
         daybudgetValue.textContent = appData.moneyPerDay;
     
         if (appData.moneyPerDay < 100) {
